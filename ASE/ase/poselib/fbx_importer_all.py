@@ -66,6 +66,7 @@ def process_file(i, fbx_file, all_fbx_path):
             motion.to_file(f"data/npy/{fbx_file[:-4]}.npy")
     except:
         print(f"Error in {fbx_file}")
+        pass
 
 def main():
     all_fbx_path = "data/cmu_fbx_all/"
@@ -82,7 +83,16 @@ def main():
         all_fbx_filtered.append(fbx)
     all_fbx_filtered.sort()
     print(len(all_fbx_filtered))
-    
+    # breakpoint()
+    # for fbx_file in tqdm(all_fbx_files):
+    #     if fbx_file.endswith(".fbx"):
+    #         print(fbx_file)
+    #         motion = SkeletonMotion.from_fbx(
+    #             fbx_file_path=all_fbx_path + fbx_file,
+    #             root_joint="Hips",
+    #             fps=60
+    #         )
+    #         motion.to_file(f"data/npy/{fbx_file[:-4]}.npy")
     # Number of processes
     n_workers = multiprocessing.cpu_count()
 

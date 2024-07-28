@@ -49,7 +49,7 @@ Data required for retargeting are stored in a retarget config dictionary as a js
   - scale: scale offset from source to target skeleton
 """
 
-VISUALIZE = False
+VISUALIZE = True
 
 def project_joints(motion):
     right_upper_arm_id = motion.skeleton_tree._node_indices["right_shoulder_pitch_link"]
