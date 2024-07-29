@@ -5,3 +5,10 @@ isaacgym*
 *__pycache__*
 fbx/
 **/__pycache__/
+sip/
+sip-4.19.3/
+lib/
+build/
+fbx*
+common/
+samples/

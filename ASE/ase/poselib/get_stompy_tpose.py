@@ -1,7 +1,7 @@
 import mujoco
 import numpy as np
 
-path = "../data/assets/mjcf/stompy/stompy.xml"
+path = "../data/assets/mjcf/stompy/stompy_mocap.xml"
 m = mujoco.MjModel.from_xml_path(path)
 # m.opt.solver = mujoco.mjtSolver.mjSOL_CG
 # m.opt.iterations = 6
@@ -17,7 +17,8 @@ key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_KEY, 'default')
 mujoco.mj_resetDataKeyframe(m, data, key)
 mujoco.mj_kinematics(m, data)
 
-new_data = data.xquat[1:,[1,2,3,0]]
+new_quat = data.xquat[1:,[1,2,3,0]]
+# print('The result transformation', new_quat)
 breakpoint()
 
 # print("model body pos", data.xpos)
