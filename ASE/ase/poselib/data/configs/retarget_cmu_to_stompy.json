@@ -1,0 +1,28 @@
+{
+    "motions_yaml": "data/configs/motions.yaml",
+    "source_motion": "data/npy",
+    "target_motion_path": "data/retarget_npy",
+    "source_tpose": "data/tpose/cmu_fbx_tpose.npy",
+    "target_tpose": "data/tpose/stompy_tpose.npy",
+    "joint_mapping": {
+         "Hips": "root",
+         "LeftUpLeg": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
+         "LeftLeg": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x8_90_mock_3_inner_rmd_x8_90_1",
+         "LeftFoot": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
+         "RightUpLeg": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
+         "RightLeg": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x8_90_mock_3_inner_rmd_x8_90_1",
+         "RightFoot": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
+         "Spine1": "fused_component_upper_limb_assembly_7_dof_1_torso_1_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
+         "LeftArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x8_90_mock_2_inner_rmd_x8_90_1",
+         "LeftForeArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
+         "LeftHand": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x4_24_mock_2_inner_rmd_x4_24_1",
+         "RightArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x8_90_mock_2_inner_rmd_x8_90_1",
+         "RightForeArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
+         "RightHand": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x4_24_mock_2_inner_rmd_x4_24_1"
+    },
+    "rotation": [ 0.0, 0.0, 0.0, 1.0],
+    "scale": 0.056444,
+	"root_height_offset": 0.0,
+	"trim_frame_beg": -1,
+	"trim_frame_end": -1
+}

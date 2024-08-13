@@ -17,7 +17,7 @@ key = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_KEY, 'default')
 mujoco.mj_resetDataKeyframe(m, data, key)
 mujoco.mj_kinematics(m, data)
 
-new_quat = data.xquat[1:,[1,2,3,0]]
+new_rotation = data.xquat[1:,[1,2,3,0]]
 # print('The result transformation', new_quat)
 breakpoint()
 
