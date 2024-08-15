@@ -33,7 +33,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class H1MimicCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
-        num_envs = 6144
+        num_envs = 4096
 
         n_demo_steps = 2
         n_demo = 9 + 3 + 3 + 3 +6*3  #observe height
@@ -57,7 +57,7 @@ class H1MimicCfg( LeggedRobotCfg ):
     class motion:
         motion_curriculum = True
         motion_type = "yaml"
-        motion_name = "motions_autogen_all_no_run_jump.yaml"
+        motion_name = "motions_autogen_walk.yaml"
 
         global_keybody = False
         global_keybody_reset_time = 2
@@ -132,7 +132,7 @@ class H1MimicCfg( LeggedRobotCfg ):
         torso_name = "torso_link"
         foot_name = "ankle"
         penalize_contacts_on = ["shoulder", "elbow", "hip"]
-        terminate_after_contacts_on = ["torso_link", ]#, "thigh", "calf"]
+        terminate_after_contacts_on = ["torso_link", "thigh", "calf" ]#]
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
   
     class rewards( LeggedRobotCfg.rewards ):
