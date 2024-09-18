@@ -1,0 +1,21 @@
+right shoulder pitch
+right shoulder yaw
+right shoulder roll
+right elbow pitch
+right wrist roll
+left hip pitch
+left hip yaw
+left hip roll
+left knee pitch
+left ankle pitch
+right hip pitch
+right hip yaw
+right hip roll
+right knee pitch
+right ankle pitch
+left shoulder pitch
+left shoulder yaw
+left shoulder roll
+left elbow pitch
+left wrist roll
+0.0987 0.0264 -2.87 2.85 -0.314 -0.04485 1.57102 1.53816 0.14658 -1.49738 3.14 3.15 -3.18 0 -0.19 2.06 -0.656 1.34 -0.241 0

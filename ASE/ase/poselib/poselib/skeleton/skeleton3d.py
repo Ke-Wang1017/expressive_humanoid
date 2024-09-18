@@ -201,7 +201,13 @@ class SkeletonTree(Serializable):
             node_name = xml_node.attrib.get("name")
             # parse the local translation into float list
             print(xml_node.attrib)
-            pos = np.fromstring(xml_node.attrib.get("pos"), dtype=float, sep=" ")
+            # pos = np.fromstring(xml_node.attrib.get("pos"), dtype=float, sep=" ")
+            pos_attr = xml_node.attrib.get("pos")
+            if pos_attr is not None:
+                pos = np.fromstring(pos_attr, dtype=float, sep=" ")
+            else:
+                # Handle the case where the "pos" attribute is missing
+                pos = np.array([0.0, 0.0, 0.0])  # or some default value
             node_names.append(node_name)
             parent_indices.append(parent_index)
             local_translation.append(pos)

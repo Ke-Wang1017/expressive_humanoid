@@ -6,23 +6,23 @@
     "target_tpose": "data/tpose/stompy_tpose.npy",
     "joint_mapping": {
          "Hips": "root",
-         "LeftUpLeg": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
-         "LeftLeg": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x8_90_mock_3_inner_rmd_x8_90_1",
-         "LeftFoot": "fused_component_lower_limbs_1_leg_assembly_2_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
-         "RightUpLeg": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
-         "RightLeg": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x8_90_mock_3_inner_rmd_x8_90_1",
-         "RightFoot": "fused_component_lower_limbs_1_leg_assembly_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
-         "Spine1": "fused_component_upper_limb_assembly_7_dof_1_torso_1_rmd_x8_90_mock_1_inner_rmd_x8_90_1",
-         "LeftArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x8_90_mock_2_inner_rmd_x8_90_1",
-         "LeftForeArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
-         "LeftHand": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_2_upper_left_arm_1_rmd_x4_24_mock_2_inner_rmd_x4_24_1",
-         "RightArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x8_90_mock_2_inner_rmd_x8_90_1",
-         "RightForeArm": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x4_24_mock_1_outer_rmd_x4_24_1",
-         "RightHand": "fused_component_upper_limb_assembly_7_dof_1_full_arm_7_dof_1_upper_left_arm_1_rmd_x4_24_mock_2_inner_rmd_x4_24_1"
+         "LeftUpLeg": "L_buttock",
+         "LeftLeg": "L_calf",
+         "LeftFoot": "L_foot",
+         "RightUpLeg": "R_buttock",
+         "RightLeg": "R_calf",
+         "RightFoot": "R_foot",
+         "LeftArm": "L_clav",
+         "LeftForeArm": "L_farm",
+         "LeftHand": "L_fhand",
+         "RightArm": "R_clav",
+         "RightForeArm": "R_farm",
+         "RightHand": "R_fhand"
     },
-    "rotation": [ 0.0, 0.0, 0.0, 1.0],
+    "rotation": [ 0.5, 0.5, 0.5, 0.5],
     "scale": 0.056444,
-	"root_height_offset": 0.0,
+	"root_height_offset": 0.63,
 	"trim_frame_beg": -1,
 	"trim_frame_end": -1
 }
+

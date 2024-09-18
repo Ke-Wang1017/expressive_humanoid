@@ -169,6 +169,12 @@ class PPOMimic:
         self.transition.observations = obs
         self.transition.critic_observations = critic_obs
 
+        # Check for nan values
+        if torch.isnan(self.transition.action_mean).any():
+            print("mean contains nan values:", self.transition.action_mean)
+        if torch.isnan(self.transition.action_sigma).any():
+            print("std contains nan values:", self.transition.action_sigma)
+
         return self.transition.actions
     
     def process_env_step(self, rewards, dones, infos):

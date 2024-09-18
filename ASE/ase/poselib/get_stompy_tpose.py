@@ -1,7 +1,7 @@
 import mujoco
 import numpy as np
 
-path = "../data/assets/mjcf/stompy/stompy_mocap.xml"
+path = "../data/assets/mjcf/stompypro/robot.xml"
 m = mujoco.MjModel.from_xml_path(path)
 # m.opt.solver = mujoco.mjtSolver.mjSOL_CG
 # m.opt.iterations = 6

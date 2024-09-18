@@ -51,6 +51,17 @@ from .h1.h1_mimic_view_motion import H1MimicViewMotion
 from .h1.h1_mimic_eval import H1MimicEval
 from .h1.h1_mimic_distill import H1MimicDistill
 
+from .stompy.stompy_config import StompyCfg, StompyCfgPPO
+from .stompy.stompy_mimic_config import StompyMimicCfg, StompyMimicCfgPPO, StompyMimicDistillCfgPPO
+from .stompy.stompy_mimic_amp_config import StompyMimicAMPCfg, StompyMimicAMPCfgPPO
+from .stompy.stompy_view_motion import StompyViewMotion
+from .stompy.stompy_amp import StompyAMP
+from .stompy.stompy_mimic import StompyMimic
+from .stompy.stompy_mimic_amp import StompyMimicAMP
+from .stompy.stompy_mimic_view_motion import StompyMimicViewMotion
+from .stompy.stompy_mimic_eval import StompyMimicEval
+from .stompy.stompy_mimic_distill import StompyMimicDistill
+
 import os
 import ipdb
 
@@ -71,6 +82,13 @@ task_registry.register( "h1_mimic_eval", H1MimicEval, H1MimicCfg(), H1MimicCfgPP
 task_registry.register( "h1_mimic_amp", H1MimicAMP, H1MimicAMPCfg(), H1MimicAMPCfgPPO() )
 task_registry.register( "h1_mimic_distill", H1MimicDistill, H1MimicCfg(), H1MimicDistillCfgPPO() )
 
+task_registry.register( "stompy", LeggedRobot, StompyCfg(), StompyCfgPPO() )
+task_registry.register( "stompy_amp", StompyAMP, StompyCfg(), StompyCfgPPO() )
+task_registry.register( "stompy_mimic", StompyMimic, StompyMimicCfg(), StompyMimicCfgPPO() )
+task_registry.register( "stompy_view", StompyMimicViewMotion, StompyMimicCfg(), StompyMimicCfgPPO() )
+task_registry.register( "stompy_mimic_eval", StompyMimicEval, StompyMimicCfg(), StompyMimicCfgPPO() )
+task_registry.register( "stompy_mimic_amp", StompyMimicAMP, StompyMimicAMPCfg(), StompyMimicAMPCfgPPO() )
+task_registry.register( "stompy_mimic_distill", StompyMimicDistill, StompyMimicCfg(), StompyMimicDistillCfgPPO() )
 
 
 

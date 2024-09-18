@@ -337,6 +337,7 @@ class MotionLib():
 
         num_motions = self.num_motions()
         total_len = self.get_total_length()
+        # breakpoint()
 
         print("Loaded {:d} motions with a total length of {:.3f}s.".format(num_motions, total_len))
 

@@ -961,10 +961,10 @@ class LeggedRobot(BaseTask):
         self.dof_names = self.gym.get_asset_dof_names(robot_asset)
         self.num_bodies = len(body_names)
         self.num_dofs = len(self.dof_names)
+        # breakpoint()
         feet_names = [s for s in body_names if self.cfg.asset.foot_name in s]
         self.torso_idx = self.gym.find_asset_rigid_body_index(robot_asset, self.cfg.asset.torso_name)
-
-        for s in ["left_ankle_link", "right_ankle_link"]:
+        for s in self.cfg.asset.foot_name_list:
             feet_idx = self.gym.find_asset_rigid_body_index(robot_asset, s)
             sensor_pose = gymapi.Transform(gymapi.Vec3(0.0, 0.0, 0.0))
             self.gym.create_asset_force_sensor(robot_asset, feet_idx, sensor_pose)
@@ -1031,7 +1031,8 @@ class LeggedRobot(BaseTask):
         for i in range(len(termination_contact_names)):
             self.termination_contact_indices[i] = self.gym.find_actor_rigid_body_handle(self.envs[0], self.actor_handles[0], termination_contact_names[i])
 
-        hip_names = ["left_hip_roll_joint", "right_hip_roll_joint"]
+        hip_names = [h for h in self.cfg.asset.hip_joint_list]
+
         self.hip_indices = torch.zeros(len(hip_names), dtype=torch.long, device=self.device, requires_grad=False)
         for i, name in enumerate(hip_names):
             self.hip_indices[i] = self.dof_names.index(name)

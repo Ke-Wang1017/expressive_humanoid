@@ -49,7 +49,7 @@ Data required for retargeting are stored in a retarget config dictionary as a js
   - scale: scale offset from source to target skeleton
 """
 
-VISUALIZE = True
+VISUALIZE = False
 
 
 def main():
@@ -75,10 +75,12 @@ def main():
         print("source_tpose: ", source_tpose)
         plot_skeleton_state(source_tpose)
 
+
     target_tpose = SkeletonState.from_file(retarget_data["target_tpose"])
     if VISUALIZE:
         print("target_tpose: ", target_tpose)
         plot_skeleton_state(target_tpose)
+
 
     # load and visualize source motion sequence
     source_motion = SkeletonMotion.from_file(retarget_data["source_motion"])
