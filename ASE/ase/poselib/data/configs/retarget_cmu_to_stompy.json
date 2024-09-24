@@ -12,6 +12,7 @@
          "RightUpLeg": "R_buttock",
          "RightLeg": "R_calf",
          "RightFoot": "R_foot",
+         "Spine1": "torso_link",
          "LeftArm": "L_clav",
          "LeftForeArm": "L_farm",
          "LeftHand": "L_fhand",

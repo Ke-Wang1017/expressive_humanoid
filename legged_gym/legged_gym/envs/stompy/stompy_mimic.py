@@ -75,26 +75,28 @@ class StompyMimic(LeggedRobot):
         # 'R_farm', 'right_hand_keypoint_link']
 
         self._key_body_ids_sim = torch.tensor([1, 4, 5, # Left Hip yaw, Knee, Ankle
-                                               11, 14, 15, # Right Hip yaw, Knee, Ankle 
-                                               6, 9, 10, # Left Shoulder pitch, Elbow, hand
-                                               16, 19, 20], device=self.device)
+                                               6, 9, 10, # Right Hip yaw, Knee, Ankle 
+                                               17, 20, 21, # Left Shoulder pitch, Elbow, hand
+                                               11, 14, 15], device=self.device)
         self._key_body_ids_sim_subset = torch.tensor([6, 7, 8, 9, 10, 11], device=self.device)  # no lower body
         
         self._num_key_bodies = len(self._key_body_ids_sim_subset)
         self._dof_body_ids = [1, 2, 3, # Hip, Knee, Ankle
                               4, 5, 6,
-                              7, 8, 9, # Shoulder, Elbow, Hand
-                              10, 11, 12]  # 12
+                              7,       # Torso
+                              8, 9, 10, # Shoulder, Elbow, Hand
+                              11, 12, 13]  # 13
         self._dof_offsets = [0, 3, 4, 5, 8, 9, 10, 
-                             13, 14, 15, 18, 19, 20]  # 13
+                             11, 
+                             14, 15, 16, 19, 20, 21]  # 14
         self._valid_dof_body_ids = torch.ones(len(self._dof_body_ids)+2*4, device=self.device, dtype=torch.bool)
         self._valid_dof_body_ids[-1] = 0 # right hand joint is fixed 
         self._valid_dof_body_ids[-6] = 0 # left hand joint is fixed
-        self.dof_indices_sim = torch.tensor([0, 1, 2, 5, 6, 7, 10, 11, 12, 15, 16, 17], device=self.device, dtype=torch.long)
-        self.dof_indices_motion = torch.tensor([0, 1, 2, 10, 11, 12, 5, 6, 7, 15, 16, 17], device=self.device, dtype=torch.long)
+        self.dof_indices_sim = torch.tensor([15, 16, 17, 18, 19, 20, 11, 12, 13, 14], device=self.device, dtype=torch.long)
+        self.dof_indices_motion = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ], device=self.device, dtype=torch.long)
         
         # self._dof_ids_subset = torch.tensor([0, 1, 2, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle
-        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17], device=self.device)  # no knee and ankle
+        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18, 19], device=self.device)  # no knee and ankle
         self._n_demo_dof = len(self._dof_ids_subset)
 
         #['left_hip_yaw_joint', 'left_hip_roll_joint', 'left_hip_pitch_joint', 
@@ -254,6 +256,7 @@ class StompyMimic(LeggedRobot):
         motion_times = self._motion_times[env_ids]
         root_pos, root_rot, dof_pos_motion, root_vel, root_ang_vel, dof_vel, key_pos \
                = self._motion_lib.get_motion_state(motion_ids, motion_times)
+        # breakpoint()
         # Intialize dof state from default position and reference position
         dof_pos_motion, dof_vel = self.reindex_dof_pos_vel(dof_pos_motion, dof_vel)
 

@@ -291,7 +291,6 @@ class ActorCriticMimic(nn.Module):
         
         # self.actor = Actor(num_prop, num_demo, num_scan, num_actions, scan_encoder_dims, actor_hidden_dims, priv_encoder_dims, num_priv_latent, num_priv_explicit, num_hist, activation, tanh_encoder_output=kwargs['tanh_encoder_output'])
         self.actor = Actor(num_prop, num_demo, kwargs["text_feat_input_dim"], kwargs["text_feat_output_dim"], kwargs["feat_hist_len"], num_scan, num_actions, scan_encoder_dims, actor_hidden_dims, priv_encoder_dims, num_priv_latent, num_priv_explicit, num_hist, activation, tanh_encoder_output=kwargs['tanh_encoder_output'])
-        breakpoint()
 
         # Value function
         critic_layers = []
@@ -340,7 +339,6 @@ class ActorCriticMimic(nn.Module):
         return self.distribution.entropy().sum(dim=-1)
 
     def update_distribution(self, observations, hist_encoding):
-        breakpoint()
         mean = self.actor(observations, hist_encoding)
         self.distribution = Normal(mean, mean*0. + self.std)
 

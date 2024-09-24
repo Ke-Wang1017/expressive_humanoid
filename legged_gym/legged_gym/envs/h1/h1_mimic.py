@@ -93,11 +93,11 @@ class H1Mimic(LeggedRobot):
         self._valid_dof_body_ids = torch.ones(len(self._dof_body_ids)+2*4, device=self.device, dtype=torch.bool)
         self._valid_dof_body_ids[-1] = 0
         self._valid_dof_body_ids[-6] = 0
-        self.dof_indices_sim = torch.tensor([0, 1, 2, 5, 6, 7, 11, 12, 13, 16, 17, 18], device=self.device, dtype=torch.long)
-        self.dof_indices_motion = torch.tensor([2, 0, 1, 7, 5, 6, 12, 11, 13, 17, 16, 18], device=self.device, dtype=torch.long)
+        self.dof_indices_sim = torch.tensor([0, 1, 2, 5, 6, 7, 11, 12, 13, 16, 17, 18], device=self.device, dtype=torch.long) # body ids in sim
+        self.dof_indices_motion = torch.tensor([2, 0, 1, 7, 5, 6, 12, 11, 13, 17, 16, 18], device=self.device, dtype=torch.long) # body ids in motion file
         
         # self._dof_ids_subset = torch.tensor([0, 1, 2, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle
-        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle
+        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle and only upper body
         self._n_demo_dof = len(self._dof_ids_subset)
 
         #['left_hip_yaw_joint', 'left_hip_roll_joint', 'left_hip_pitch_joint', 
@@ -498,7 +498,7 @@ class H1Mimic(LeggedRobot):
         dof_vel = torch.zeros_like(dof_vel)
 
         env_ids = torch.arange(self.num_envs, dtype=torch.long, device=self.device)
-
+        breakpoint()
         dof_pos, dof_vel = self.reindex_dof_pos_vel(dof_pos, dof_vel)
 
         self._set_env_state(env_ids=env_ids, 

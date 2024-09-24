@@ -131,6 +131,9 @@ class H1MimicCfg( LeggedRobotCfg ):
         file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/h1/h1_custom_collision.urdf'
         torso_name = "torso_link"
         foot_name = "ankle"
+        foot_name_list = ["left_ankle_link",
+                          "right_ankle_link"]
+        hip_joint_list = ["left_hip_yaw_joint", "right_hip_yaw_joint"]
         penalize_contacts_on = ["shoulder", "elbow", "hip"]
         terminate_after_contacts_on = ["torso_link", "thigh", "calf" ]#]
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter

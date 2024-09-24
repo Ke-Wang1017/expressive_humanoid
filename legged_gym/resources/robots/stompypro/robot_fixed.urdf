@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <robot name="robot">
+  <link name="base">
+    <inertial>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <mass value="0.001" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+  <joint name="floating_base" type="fixed" dont_collapse="true">
+    <origin rpy="0 0 0" xyz="0 0 0.0" />
+    <parent link="base" />
+    <child link="trunk" />
+    </joint>
   <link name="trunk">
     <inertial>
       <origin rpy="0.0 0.0 0.0" xyz="-0.00051930492 0.00030343937 0.21140495" />
@@ -282,47 +292,12 @@
         </geometry>
       </collision>
     </link>
-  <link
-    name="torso_link">
-    <inertial>
-      <origin
-        xyz="0.000489 0.002797 0.00484"
-        rpy="0 0 0" />
-      <mass
-        value="0.789" />
-      <inertia
-        ixx="0.04873"
-        ixy="-0.00053763"
-        ixz="0.0020276"
-        iyy="0.040963"
-        iyz="-0.00074582"
-        izz="0.012785" />
-    </inertial>
-  </link>
-  <joint
-    name="torso_joint"
-    type="revolute">
-    <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
-    <parent
-      link="trunk" />
-    <child
-      link="torso_link" />
-    <axis
-      xyz="0 0 1" />
-    <limit
-      lower="-2.35"
-      upper="2.35"
-      effort="200"
-      velocity="5" />
-  </joint>
-  <joint name="L_shoulder_y" type="revolute">
+  <joint name="L_shoulder_y" type="fixed" dont_collapse="true">
     <origin rpy="0 0 0" xyz="0 0.255 0.45" />
-    <parent link="torso_link" />
+    <parent link="trunk" />
     <child link="L_clav" />
     <axis xyz="0.0 1.0 0.0" />
-    <limit effort="60" lower="-3.1416" upper="3.1416" velocity="5" />
+    <limit effort="60" lower="-3.1416" upper="3.1416" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="L_clav">
@@ -344,12 +319,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="L_shoulder_x" type="revolute">
+  <joint name="L_shoulder_x" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 0" />
     <parent link="L_clav" />
     <child link="L_scapula" />
     <axis xyz="1.0 0.0 0.0" />
-    <limit effort="60" lower="0" upper="3.1416" velocity="5" />
+    <limit effort="60" lower="0" upper="3.1416" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="L_scapula">
@@ -369,12 +344,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="L_shoulder_z" type="revolute">
+  <joint name="L_shoulder_z" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 0" />
     <parent link="L_scapula" />
     <child link="L_uarm" />
     <axis xyz="0.0 0.0 1.0" />
-    <limit effort="17" lower="-3.14" upper="3.14" velocity="5" />
+    <limit effort="17" lower="-3.14" upper="3.14" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="L_uarm">
@@ -394,12 +369,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="L_elbow_x" type="revolute">
+  <joint name="L_elbow_x" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 -0.23" />
     <parent link="L_uarm" />
     <child link="L_farm" />
     <axis xyz="1.0 0 0.0" />
-    <limit effort="17" lower="-1.9199" upper="1.9199" velocity="5" />
+    <limit effort="17" lower="-1.9199" upper="1.9199" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="L_farm">
@@ -419,26 +394,12 @@
         </geometry>
       </collision>
     </link>
-  <link
-    name="left_hand_keypoint_link">
-  </link>
-  <joint 
-    name="left_hand_keypoint_joint"
-    type="fixed" dont_collapse="true">
-    <origin
-      xyz="0.0 0 -0.115"
-      rpy="0 0 0" />
-    <parent
-      link="L_farm" />
-    <child
-      link="left_hand_keypoint_link" />
-  </joint>
-  <joint name="R_shoulder_y" type="revolute">
+  <joint name="R_shoulder_y" type="fixed" dont_collapse="true">
     <origin rpy="0 0 0" xyz="0 -0.255 0.45" />
     <parent link="trunk" />
     <child link="R_clav" />
     <axis xyz="0.0 1.0 0.0" />
-    <limit effort="60" lower="-3.1416" upper="3.1416" velocity="5" />
+    <limit effort="60" lower="-3.1416" upper="3.1416" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="R_clav">
@@ -460,12 +421,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="R_shoulder_x" type="revolute">
+  <joint name="R_shoulder_x" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 0" />
     <parent link="R_clav" />
     <child link="R_scapula" />
     <axis xyz="1.0 0.0 0.0" />
-    <limit effort="60" lower="-3.1416" upper="0" velocity="5" />
+    <limit effort="60" lower="-3.1416" upper="0" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="R_scapula">
@@ -485,12 +446,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="R_shoulder_z" type="revolute">
+  <joint name="R_shoulder_z" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 0" />
     <parent link="R_scapula" />
     <child link="R_uarm" />
     <axis xyz="0.0 0.0 1.0" />
-    <limit effort="17" lower="-3.14" upper="3.14" velocity="5" />
+    <limit effort="17" lower="-3.14" upper="3.14" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="R_uarm">
@@ -510,12 +471,12 @@
         </geometry>
       </collision>
     </link>
-  <joint name="R_elbow_x" type="revolute">
+  <joint name="R_elbow_x" type="fixed" dont_collapse="true">
     <origin rpy="0.0 0.0 0.0" xyz="0 0 -0.23" />
     <parent link="R_uarm" />
     <child link="R_farm" />
     <axis xyz="1.0 0 0.0" />
-    <limit effort="17" lower="-1.9199" upper="1.9199" velocity="5" />
+    <limit effort="17" lower="-1.9199" upper="1.9199" velocity="0" />
     <dynamics damping="0" friction="0" />
     </joint>
   <link name="R_farm">
@@ -535,18 +496,4 @@
         </geometry>
       </collision>
     </link>
-  <link
-    name="right_hand_keypoint_link">
-  </link>
-  <joint 
-    name="right_hand_keypoint_joint"
-    type="fixed" dont_collapse="true">
-    <origin
-      xyz="0 0 -0.115"
-      rpy="0 0 0" />
-    <parent
-      link="R_farm" />
-    <child
-      link="right_hand_keypoint_link" />
-  </joint>
-</robot>
+  </robot>

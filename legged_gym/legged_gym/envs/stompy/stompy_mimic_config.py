@@ -33,7 +33,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class StompyMimicCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
-        num_envs = 4096
+        num_envs = 1
 
         n_demo_steps = 2
         n_demo = 9 + 3 + 3 + 3 +6*3  #observe height
@@ -41,8 +41,8 @@ class StompyMimicCfg( LeggedRobotCfg ):
 
         n_scan = 0 #132 terrain scan
         n_priv = 3
-        n_priv_latent = 4 + 1 + 18*2
-        n_proprio = 3 + 2 + 2 + 18*3 + 2 # one hot
+        n_priv_latent = 4 + 1 + 19*2
+        n_proprio = 3 + 2 + 2 + 19*3 + 2 # one hot
         history_len = 10
 
         prop_hist_len = 4
@@ -51,9 +51,9 @@ class StompyMimicCfg( LeggedRobotCfg ):
         num_observations = n_feature + n_proprio + n_demo + n_scan + history_len*n_proprio + n_priv_latent + n_priv
 
         episode_length_s = 50 # episode length in seconds
-        num_actions = 18
+        num_actions = 19
         
-        num_policy_actions = 18
+        num_policy_actions = 19
     
     class motion:
         motion_curriculum = True
@@ -88,6 +88,7 @@ class StompyMimicCfg( LeggedRobotCfg ):
             "L_shoulder_x": 0.0,
             "L_shoulder_z": 0.0,
             "L_elbow_x": 0.0,
+            "torso_joint": 0.0,
             "R_hip_y": -0.22,
             "R_hip_x": 0.026,
             "R_hip_z": 0.0314,
@@ -106,6 +107,7 @@ class StompyMimicCfg( LeggedRobotCfg ):
                      'L_hip_x': 60,
                      'L_hip_z': 60,
                      'L_knee': 120,
+                     'torso_joint': 200,
                      'L_ankle_y': 17,
                      'R_hip_y': 120,
                      'R_hip_x': 60,
@@ -120,6 +122,7 @@ class StompyMimicCfg( LeggedRobotCfg ):
                      'L_hip_z': 3,
                      'L_knee': 6,
                      'L_ankle_y': 1,
+                     'torso_joint': 10,
                      'R_hip_y': 6,
                      'R_hip_x': 3,
                      'R_hip_z': 3,
@@ -142,7 +145,7 @@ class StompyMimicCfg( LeggedRobotCfg ):
                           "R_foot"]
         hip_joint_list = ["L_hip_y", "R_hip_y"]
         penalize_contacts_on = ["shoulder", "arm", "clav", "scapula"]
-        terminate_after_contacts_on = ["trunk", "thigh", "calf" ]#]
+        terminate_after_contacts_on = [ ]#"trunk", "thigh", "calf"
         self_collisions = 1 # 1 to disable, 0 to enable...bitwise filter
   
     class rewards( LeggedRobotCfg.rewards ):
