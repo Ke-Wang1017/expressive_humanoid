@@ -71,7 +71,7 @@ def play(args):
     if args.nodelay:
         env_cfg.domain_rand.action_delay_view = 0
     env_cfg.motion.motion_curriculum = True
-    env_cfg.env.num_envs = 2#2 if not args.num_envs else args.num_envs
+    env_cfg.env.num_envs = 3#2 if not args.num_envs else args.num_envs
     env_cfg.env.episode_length_s = 30
     env_cfg.commands.resampling_time = 60
     env_cfg.terrain.num_rows = 5

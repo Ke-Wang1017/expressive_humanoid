@@ -92,11 +92,11 @@ class StompyMimic(LeggedRobot):
         self._valid_dof_body_ids = torch.ones(len(self._dof_body_ids)+2*4, device=self.device, dtype=torch.bool)
         self._valid_dof_body_ids[-1] = 0 # right hand joint is fixed 
         self._valid_dof_body_ids[-6] = 0 # left hand joint is fixed
-        self.dof_indices_sim = torch.tensor([15, 16, 17, 18, 19, 20, 11, 12, 13, 14], device=self.device, dtype=torch.long)
-        self.dof_indices_motion = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ], device=self.device, dtype=torch.long)
+        self.dof_indices_sim = torch.tensor([10, 11, 12, 13, 15, 16, 17, 18], device=self.device, dtype=torch.long)
+        self.dof_indices_motion = torch.tensor([16, 17, 18, 19, 11, 12, 13, 14], device=self.device, dtype=torch.long)
         
         # self._dof_ids_subset = torch.tensor([0, 1, 2, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle
-        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18, 19], device=self.device)  # no knee and ankle
+        self._dof_ids_subset = torch.tensor([10, 11, 12, 13, 14, 15, 16, 17, 18], device=self.device)  # no knee and ankle
         self._n_demo_dof = len(self._dof_ids_subset)
 
         #['left_hip_yaw_joint', 'left_hip_roll_joint', 'left_hip_pitch_joint', 
@@ -183,7 +183,8 @@ class StompyMimic(LeggedRobot):
         self.actions = torch.clip(actions, -clip_actions, clip_actions).to(self.device)
         self.render()
                 
-        self.actions[:, [4, 9]] = torch.clamp(self.actions[:, [4, 9]], -0.5, 0.5)
+        # self.actions[:, [4, 9]] = torch.clamp(self.actions[:, [4, 9]], -0.5, 0.5)
+        self.actions[:, [14]] = torch.clamp(self.actions[:, [14]], -0.0, 0.0) # make torso joint fixed
         for _ in range(self.cfg.control.decimation):
             self.torques = self._compute_torques(self.actions).view(self.torques.shape)
             self.gym.set_dof_actuation_force_tensor(self.sim, gymtorch.unwrap_tensor(self.torques))

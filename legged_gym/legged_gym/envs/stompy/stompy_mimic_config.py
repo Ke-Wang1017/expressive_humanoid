@@ -33,7 +33,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class StompyMimicCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
-        num_envs = 1
+        num_envs = 2048
 
         n_demo_steps = 2
         n_demo = 9 + 3 + 3 + 3 +6*3  #observe height
@@ -58,7 +58,7 @@ class StompyMimicCfg( LeggedRobotCfg ):
     class motion:
         motion_curriculum = True
         motion_type = "yaml"
-        motion_name = "motions_autogen_walk.yaml"
+        motion_name = "motions_debug.yaml"
 
         global_keybody = False
         global_keybody_reset_time = 2
