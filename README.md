@@ -115,6 +115,12 @@ Can be used in both IsaacGym and web viewer.
 
 For more arguments, refer `legged_gym/utils/helpers.py`.
 
+### Errors
+If you observe errors with libpython3.8.so.1.0, you can try the following:
+```bash
+export LD_LIBRARY_PATH=PATH_TO_YOUR_ENV/lib:$LD_LIBRARY_PATH
+```
+
 ### Acknowledgement
 We derive the retargetting code from [ASE](https://github.com/nv-tlabs/ASE.git).
 
