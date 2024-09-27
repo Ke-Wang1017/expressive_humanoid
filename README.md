@@ -1,30 +1,9 @@
-<h1 align="center">Expressive Whole-Body Control for <br> Humanoid Robots</h1>
-
+<h1 align="center">Expressive Whole-Body Control for <br> Stompy Humanoid Robots</h1>
 <p align="center">
-    <a href="https://chengxuxin.github.io/"><strong>Xuxin Cheng*</strong></a>
-    ·
-    <a href="https://yandongji.github.io/"><strong>Yandong Ji*</strong></a>
-    ·
-    <a href="https://jeremycjm.github.io/"><strong>Junming Chen</strong></a>
-    <br>
-    <a href="https://www.episodeyang.com/"><strong>Ge Yang</strong></a>
-    ·
-    <a href="https://xiaolonw.github.io/"><strong>Xiaolong Wang</strong></a>
+<img src="./img/09_12-navigate - walk forward, backward, sideways.webp" width="80%"/>
 </p>
 
-<p align="center">
-    <img src="img/UCSanDiegoLogo-BlueGold.png" height=40">
-</p>
-
-<p align="center">
-<h3 align="center"><a href="https://expressive-humanoid.github.io/">Website</a> | <a href="https://arxiv.org/abs/2402.16796">arXiv</a> | <a href="https://youtu.be/UGA9YAg3e-M">Video</a> | <a href="https://x.com/xiaolonw/status/1762528106001379369">Summary</a> </h3>
-  <div align="center"></div>
-</p>
-
-<p align="center">
-<img src="./img/main.webp" width="80%"/>
-</p>
-
+This is the code adopted from [expressive-humanoid](https://github.com/chengxuxin/expressive-humanoid) and make it work for Stompy from [kscale labs](https://kscale.store/). 
 ## Installation ##
 ```bash
 conda create -n humanoid python=3.8
@@ -62,7 +41,7 @@ This will import all motions in CMU Mocap dataset into `ASE/ase/poselib/data/npy
 ```bash
 cd ASE/ase/poselib
 mkdir pkl retarget_npy
-python retarget_motion_h1_all.py
+python retarget_motion_stompy_all.py
 ```
 This will retarget all motions in `ASE/ase/poselib/data/npy` to `ASE/ase/poselib/data/retarget_npy`.
 
@@ -71,25 +50,26 @@ This will retarget all motions in `ASE/ase/poselib/data/npy` to `ASE/ase/poselib
 This step will require running simulation to extract more precise key body positions. 
 ```bash
 cd legged_gym/legged_gym/scripts
-python train.py debug --task h1_view --motion_name motions_debug.yaml --debug
+python train.py debug --task stompy_view --motion_name motions_debug.yaml --debug
 ```
 Train for 1 iteration and kill the program to have a dummy model to load. 
 ```bash
-python play.py debug --task h1_view --motion_name motions_autogen_all.yaml
+python play.py debug --task stompy_view --motion_name motions_debug.yaml
 ```
 It is recommended to use `motions_autogen_all.yaml` at the first time, so that later if you have a subset it is not neccessary to regenerate keybody positions. This will generate keybody positions to `ASE/ase/poselib/data/retarget_npy`.
-Set wandb asset: 
+
+Set wandb asset: you can login your own wandb account with arg `--entity WANDB_ENTITY`
 
 ## Usage 
 To train a new policy
 ```bash
 python train.py xxx-xx-some_descriptions_of_run --device cuda:0 --entity WANDB_ENTITY
 ```
-`xxx-xx` is usually an id like `000-01`. `motion_type` and `motion_name` are defined in `legged_gym/legged_gym/envs/h1/h1_mimic_config.py`. They can be also given as arguments. Can set default WANDB_ENTITY in `legged_gym/legged_gym/utils/helpers.py`.
+`xxx-xx` is usually an id like `000-01`. `motion_type` and `motion_name` are defined in `legged_gym/legged_gym/envs/stompy/stompy_mimic_config.py`. They can be also given as arguments. Can set default WANDB_ENTITY in `legged_gym/legged_gym/utils/helpers.py`.
 
 To play a policy
 ```bash
-python play.py xxx-xx
+python play.py xxx-xx --task stompy_mimic_eval --record_video
 ```
 No need to write the full experimentt id. The parser will auto match runs with first 6 strings (xxx-xx). So better make sure you don't reuse xxx-xx. Delay is added after 8k iters. If you want to play after 8k, add `--delay`.
 
@@ -137,3 +117,5 @@ For more arguments, refer `legged_gym/utils/helpers.py`.
 
 ### Acknowledgement
 We derive the retargetting code from [ASE](https://github.com/nv-tlabs/ASE.git).
+
+The original expressive humanoid code is from [expressive-humanoid](https://github.com/chengxuxin/expressive-humanoid)

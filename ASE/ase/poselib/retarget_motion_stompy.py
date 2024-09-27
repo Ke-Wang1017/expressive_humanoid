@@ -39,6 +39,7 @@ import os
 
 """
 This scripts shows how to retarget a motion clip from the source skeleton to a target skeleton.
+You have to specify the motion name as argument. For example: "python retarget_motion_stompy.py 02_01"
 Data required for retargeting are stored in a retarget config dictionary as a json file. This file contains:
   - source_motion: a SkeletonMotion npy format representation of a motion sequence. The motion clip should use the same skeleton as the source T-Pose skeleton.
   - target_motion_path: path to save the retargeted motion to
@@ -49,7 +50,7 @@ Data required for retargeting are stored in a retarget config dictionary as a js
   - scale: scale offset from source to target skeleton
 """
 
-VISUALIZE = False
+VISUALIZE = True
 
 
 def main():
@@ -59,9 +60,6 @@ def main():
     retarget_data_path = "data/configs/retarget_cmu_to_stompy.json"
     with open(retarget_data_path) as f:
         retarget_data = json.load(f)
-
-    # with open(retarget_data["motions_yaml"], 'r') as f:
-    #     motions_yaml = yaml.load(f, Loader=yaml.SafeLoader)["motions"]
 
     # overide json template with yaml data
     retarget_data["source_motion"] = os.path.join(retarget_data["source_motion"], motion_name + ".npy")
@@ -138,7 +136,7 @@ def main():
     
     new_sk_state = SkeletonState.from_rotation_and_root_translation(target_motion.skeleton_tree, local_rotation, root_translation, is_local=True)
     target_motion = SkeletonMotion.from_skeleton_state(new_sk_state, fps=target_motion.fps)
-
+    breakpoint()
     # save retargeted motion
     target_motion.to_file(retarget_data["target_motion_path"])
 

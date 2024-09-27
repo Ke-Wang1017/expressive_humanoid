@@ -18,55 +18,55 @@ motions:
   #   weight: 1.0
   #   description: "punch, stirke"
   #   difficulty: 4
-  # '05_01':
-  #   description: walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '06_01':
-  #   description: walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '07_01':
-  #   description: walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '07_02':
-  #   description: walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '07_03':
-  #   description: walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '91_05':
-  #   description: Mummy Walk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
-  # '104_41':
-  #   description: ZombieWalk
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
+  '05_01':
+    description: walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '06_01':
+    description: walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '07_01':
+    description: walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '07_02':
+    description: walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '07_03':
+    description: walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '91_05':
+    description: Mummy Walk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
+  '104_41':
+    description: ZombieWalk
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
   
-  # '141_22':
-  #   description: High Five
-  #   difficulty: 4
-  #   trim_beg: -1
-  #   trim_end: -1
-  #   weight: 1.0
+  '141_22':
+    description: High Five
+    difficulty: 4
+    trim_beg: -1
+    trim_end: -1
+    weight: 1.0
 
   # '41_10':
   #   description: basketball signals

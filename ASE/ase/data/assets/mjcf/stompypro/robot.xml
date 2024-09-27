@@ -77,10 +77,10 @@
         </body>
       </body>
     </body>
-    <body name="torso_link" pos="0.000489 0.002797 0.0">
+    <body name="torso_link" pos="0.000489 0.002797 0.35">
         <inertial pos="0.00121221 -0.00150959 -9.36775e-05" quat="0.705125 0.709057 0.00277488 -0.00539434" mass="1.12469" diaginertia="0.00170716 0.00112244 0.00105955"/>
         <joint name="torso_joint" pos="0 0 0.0" axis="0 0 1" range="-2.35 2.35" />
-        <body name="L_clav" pos="0 0.255 0.45">
+        <body name="L_clav" pos="0 0.255 0.1">
           <inertial pos="0.00121221 -0.00150959 -9.36775e-05" quat="0.705125 0.709057 0.00277488 -0.00539434" mass="1.12469" diaginertia="0.00170716 0.00112244 0.00105955"/>
           <joint name="L_shoulder_y" pos="0 0 0" axis="0 1 0" range="-3.1416 3.1416" actuatorfrcrange="-60 60"/>
           <geom quat="2.67949e-08 -1 0 0" type="mesh" mesh="clav"/>
@@ -101,8 +101,8 @@
             </body>
           </body>
         </body>
-    </body>
-    <body name="R_clav" pos="0 -0.255 0.45">
+    
+    <body name="R_clav" pos="0 -0.255 0.1">
       <inertial pos="0.00121221 0.00150959 -9.36775e-05" quat="0.709057 0.705125 0.00539434 -0.00277488" mass="1.12469" diaginertia="0.00170716 0.00112244 0.00105955"/>
       <joint name="R_shoulder_y" pos="0 0 0" axis="0 1 0" range="-3.1416 3.1416" actuatorfrcrange="-60 60"/>
       <geom type="mesh" mesh="clav"/>
@@ -123,8 +123,9 @@
         </body>
       </body>
     </body>
+  </body>
   </body></worldbody>
   <keyframe>
-    <key name="default" qpos="0 0 0.64 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1.18 0 0 0 -1.18 0 0"/>
+    <key name="default" qpos="0 0 0.64 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1.57 0 0 0 -1.57 0 0"/>
   </keyframe>
 </mujoco>
