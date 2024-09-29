@@ -61,7 +61,7 @@ def get_load_path(root, load_run=-1, checkpoint=-1, model_name_include="jit"):
 def play(args):
     if args.web:
         web_viewer = webviewer.WebViewer()
-    args.task = "h1_mimic_eval" if args.task == "h1_mimic" or args.task == "h1_mimic_amp" else args.task
+    args.task = "stompy_mimic_eval" if args.task == "stompy_mimic" or args.task == "stompy_mimic_amp" else args.task
     faulthandler.enable()
     exptid = args.exptid
     log_pth = os.path.join(LEGGED_GYM_ROOT_DIR, 'logs', args.proj_name) + "/" + args.exptid
@@ -125,7 +125,7 @@ def play(args):
     ppo_runner, train_cfg, log_pth = task_registry.make_alg_runner(log_root = log_pth, env=env, name=args.task, args=args, train_cfg=train_cfg, return_log_dir=True)
     if_distill = ppo_runner.if_distill
 
-    if args.task == "h1_mimic_merge":
+    if args.task == "stompy_mimic_merge":
         # upper policy
         log_pth_upper = "../../logs/{}/".format(args.proj_name) + "070-20"
         log_pth_upper = get_load_path_auto(log_pth_upper, load_run=train_cfg.runner.load_run, checkpoint=train_cfg.runner.checkpoint)
@@ -144,6 +144,7 @@ def play(args):
     else:
         policy = ppo_runner.get_inference_policy(device=env.device)
         estimator = ppo_runner.get_estimator_inference_policy(device=env.device)
+
 
     actions = torch.zeros(env.num_envs, env.num_actions, device=env.device, requires_grad=False)
     infos = {}
@@ -197,7 +198,7 @@ def play(args):
             obs[:, 5] = torch.sin(delta_yaw)
             obs[:, 6] = torch.cos(delta_yaw)
             actions = ppo_runner.alg.student_actor(obs.detach(), obs_student, hist_encoding=True)
-        elif args.task == "h1_mimic_merge":
+        elif args.task == "stompy_mimic_merge":
             actions_lower = policy(obs.detach(), hist_encoding=True)
             # upper, featuren comes from history so remove here
             obs_upper = env.compute_observations_upper().detach()
