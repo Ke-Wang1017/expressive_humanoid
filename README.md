@@ -36,6 +36,7 @@ cd ASE/ase/poselib
 python fbx_importer_all.py
 ```
 This will import all motions in CMU Mocap dataset into `ASE/ase/poselib/data/npy`.
+### The dataset is quite large and importing takes a lot of effort, you can directly download the already generated dataset [here](https://drive.google.com/file/d/1W7NPk37pkDzDcuaCfBJLs0iSzUmRTkH0/view?usp=drive_link)
 
 4. Retarget motions
 ```bash
@@ -73,9 +74,9 @@ python play.py xxx-xx --task stompy_mimic_eval --record_video
 ```
 No need to write the full experimentt id. The parser will auto match runs with first 6 strings (xxx-xx). So better make sure you don't reuse xxx-xx. Delay is added after 8k iters. If you want to play after 8k, add `--delay`.
 
-To play with example pretrained models
+To play with example pretrained models, find expid of the pretrained model in `log/stompy` like `060-40`,
 ```bash
-python play.py 060-40 --delay --motion_name motions_debug.yaml
+python play.py 060-40 --task stompy_mimic_eval --delay --motion_name motions_debug.yaml
 ```
 Try to press `+` or `-` to see different motions. The motion name will be printed on terminal. `motions_debug.yaml` is a small subset of motions for debugging and contains some representative motions.
 
