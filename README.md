@@ -36,7 +36,7 @@ cd ASE/ase/poselib
 python fbx_importer_all.py
 ```
 This will import all motions in CMU Mocap dataset into `ASE/ase/poselib/data/npy`.
-### The dataset is quite large and importing takes a lot of effort, you can directly download the already generated dataset [here](https://drive.google.com/file/d/1W7NPk37pkDzDcuaCfBJLs0iSzUmRTkH0/view?usp=drive_link)
+### The dataset is quite large and importing takes a lot of effort, you can directly download the already generated dataset [here](https://drive.google.com/file/d/1W7NPk37pkDzDcuaCfBJLs0iSzUmRTkH0/view?usp=sharing)
 
 4. Retarget motions
 ```bash
